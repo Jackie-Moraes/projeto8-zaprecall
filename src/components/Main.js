@@ -1,15 +1,19 @@
+import React from "react";
 import Questions from "./Questions.js"
 
-export default function Main() {
+export default function Main(props) {
+    const {advanced, toggle} = props;
+    const css = `start ${advanced ? "hidden" : ""}`;
+
     return (
         <main>
-            <section className='start hidden'>
+            <section className={css}>
                 <img src="/images/logo.png" alt="ZapRecall Logo" />
                 <h1>ZapRecall</h1>
-                <button>Iniciar Recall!</button>
+                <button onClick={toggle}>Iniciar Recall!</button>
             </section>
 
-            <Questions />
+            {advanced ? <Questions /> : <></>}
         </main>
     )
 }
