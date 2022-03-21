@@ -1,7 +1,10 @@
-export default function Footer() {
+import React from "react"
+
+export default function Footer(props) {
+
     return (
         <footer className="">
-            <p>0/8 CONCLUÍDOS</p>
+            <p>{props.valor}/8 CONCLUÍDOS</p>
         </footer>
     )
 }

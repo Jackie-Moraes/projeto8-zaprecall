@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Questions() {
+export default function Questions(props) {
 
     const perguntas = [{
         pergunta: "O que é JSX?",
@@ -34,8 +34,10 @@ export default function Questions() {
         pergunta: "Usamos estado (state) para __",
         resposta: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"
     }];
-    
-    let zaps = 0;
+
+    function somaValor(valor) {
+        props.callback(valor);
+    }
 
     function Pergunta(props) {
         const [selecionarPergunta, setSelecionarPergunta] = React.useState(false);
@@ -107,15 +109,15 @@ export default function Questions() {
                     <div className="answers">
                         <button className="red" onClick={() => {
                             setRed(!red);
-                        }}>
-                            Não lembrei</button>
+                            somaValor();
+                        }}>Não lembrei</button>
                         <button className="orange" onClick={() => {
-                            zaps += 1
                             setOrange(!orange)
+                            somaValor();
                         }}>Quase não lembrei</button>
                         <button className="green" onClick={() => {
-                            zaps += 1
-                            setGreen(!green)
+                            setGreen(!green);
+                            somaValor();
                         }}>Zap!</button>
                     </div>
                 </div>

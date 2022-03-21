@@ -6,15 +6,22 @@ import Footer from './components/Footer';
 
 const divRoot = document.querySelector(".root");
 
-function App() {
+let valor = 0;
 
-    const [advanced, setAdvanced] = React.useState(false)
+function App() {
+    const [advanced, setAdvanced] = React.useState(false);
+    const [acertos, setAcertos] = React.useState(0)
+
+    function AtualizaValor(){
+        setAcertos(acertos + 1)
+        console.log(valor)
+    }
 
     return (
         <>
             {advanced ? <Header /> : <></>}
-            <Main toggle={() => {setAdvanced(!advanced)}} advanced={advanced} />
-            {advanced ? <Footer /> : <></>}
+            <Main toggle={() => {setAdvanced(!advanced)}} advanced={advanced} callback={AtualizaValor}/>
+            {advanced ? <Footer valor={acertos}/> : <></>}
         </>
     )
 }

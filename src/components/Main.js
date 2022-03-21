@@ -2,7 +2,7 @@ import React from "react";
 import Questions from "./Questions.js"
 
 export default function Main(props) {
-    const {advanced, toggle} = props;
+    const {advanced, toggle, callback} = props;
     const css = `start ${advanced ? "hidden" : ""}`;
 
     return (
@@ -13,7 +13,7 @@ export default function Main(props) {
                 <button onClick={toggle}>Iniciar Recall!</button>
             </section>
 
-            {advanced ? <Questions /> : <></>}
+            {advanced ? <Questions callback={callback}/> : <></>}
         </main>
     )
 }
